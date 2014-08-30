@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('body').on('click', '[type="submit"]', submitHandler);
+        });
+
+        var submitHandler = function(e) {
+
+            e.preventDefault();
+
+            $('#postframe').remove();
+
+            var iframe = $('<iframe name="postframe" id="postframe" style="display:none;" ></iframe>');
+
+            $('body').append(iframe);
+
+            var $form = $('form');
+
+            $form.attr('target','postframe');
+
+            $form.submit();
+
+            $('#postframe').load(function() {
+                var iframeContents = this.contentWindow.document.body.innerHTML;
+                $('#test').html(iframeContents);
+            });
+        };
+    </script>
+</head>
+<body>
+    <h1>Debug shit, yo.</h1>
+
+    <div class="multistep-modal">
+        <form action="/debug/form" method="POST">
+            <input type="file" name="desktop" />   
+            <input type="file" name="mobile" />
+            <input type="submit" />
+        </form>
+    </div>
+
+    <div id="test"></div>
+
+</body>
+</html>

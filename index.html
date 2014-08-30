@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('body').on('submit', '.multistep-modal form', function(e) {
+                //e.preventDefault();
+                console.log(this);
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Debug shit, yo.</h1>
+
+    <div class="multistep-modal">
+        <form action="/debug/form" method="POST">
+            <input type="file" name="desktop" />   
+            <input type="file" name="mobile" />
+            <input type="submit" />
+        </form>
+    </div>
+
+</body>
+</html>
